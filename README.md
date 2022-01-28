@@ -11,6 +11,8 @@ Since we deploy and commit, the following understanding of Git is crucial:
 
 ## Docker
 
+- [ ] <https://fastapi.tiangolo.com/deployment/docker/>
+- [ ] <https://www.youtube.com/watch?v=qQNGw_m8t0Y>
 - [ ] <https://www.youtube.com/watch?v=3c-iBn73dDE>
 - [ ] <https://www.youtube.com/watch?v=fqMOX6JJhGo>
 
