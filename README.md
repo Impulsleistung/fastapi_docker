@@ -15,4 +15,4 @@ Since we deploy and commit, the following understanding of Git is crucial:
 
 ## Fast API
 
-- [x] https://www.youtube.com/watch?v=GN6ICac3OXY
+- [x] [FastAPI Tutorial - Building RESTful APIs with Python](https://www.youtube.com/watch?v=GN6ICac3OXY)
