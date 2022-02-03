@@ -1,13 +1,19 @@
-
+# General import go here
 from typing import List
 from uuid import UUID, uuid4
 from fastapi import FastAPI, HTTPException
 
+# Specific imports of our Data Models go here:
 from models import Gender, Role, User, UserUpdateRequest
 
-
+# Keep the main - call simple
 app = FastAPI()
 
+# Create a datastructure which is:
+#   ... a type of List and Contains
+#   ... Objects of Type User which are
+#   ... described in the models.py
+#   ... the UUID is given by default for testing resons only
 db: List[User] = [
     User(id=UUID("b59c76c4-e7e6-42ae-b411-a7a945e885d8"), first_name="Jamila",
          last_name="Ahmed", gender=Gender.female, roles=[Role.student]),
@@ -16,21 +22,33 @@ db: List[User] = [
 
 ]
 
+# The design of a modern REST-API endpoint concludes that all
+# ... data are transferred in the body. We must not use url parameters
+# ... because data security
+
+# HTTP - GET (landing page)
+
 
 @app.get("/")
 async def root():
     return {"hello": "world"}
+
+# HTTP - GET (this is the API endpoint)
 
 
 @app.get("/api/v1/users")
 async def fetch_users():
     return db
 
+# HPPT - POST (this is the API endpoint)
+
 
 @app.post("/api/v1/users")
 async def register_user(user: User):
     db.append(user)
     return {"id": user.id}
+
+# HTTP - DELETE (this is the API endpoint)
 
 
 @app.delete("/api/v1/users/{user_id}")
@@ -41,6 +59,8 @@ async def delete_user(user_id: UUID):
             return
     raise HTTPException(
         status_code=404, detail=f"user with id:{user_id} does not exist")
+
+# HTTP - PUT (this is the API endpoint)
 
 
 @app.put("/api/v1/users/{user_id}")
