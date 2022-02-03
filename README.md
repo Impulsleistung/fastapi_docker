@@ -5,6 +5,7 @@
 The technical solution of "Fast API" will be demonstrated in a cloud environment and in interaction with Python/Pandas data types. The use of a container-based architecture is preferred as the solution should be modular and scalable. The architecture is sketched for better understanding
 
 Since we deploy and commit, the following understanding of Git is crucial:
+
 ![GitHub Workflow](doc/git_workflow.png)
 
 Remarks: Deployment in AZURE as WebApp possible
@@ -13,8 +14,12 @@ Remarks: Deployment in AZURE as WebApp possible
 
 ## Docker
 
-- [ ] <https://fastapi.tiangolo.com/deployment/docker/>
+* [FastAPI in Containers - Docker](https://fastapi.tiangolo.com/deployment/docker/)
 
 ## Fast API
 
-- [x] [FastAPI Tutorial - Building RESTful APIs with Python](https://www.youtube.com/watch?v=GN6ICac3OXY)
+* [FastAPI Tutorial - Building RESTful APIs with Python](https://www.youtube.com/watch?v=GN6ICac3OXY)
+
+## Rest Testing
+
+* [Thunder Client](https://www.thunderclient.com/)
