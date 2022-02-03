@@ -7,6 +7,8 @@ The technical solution of "Fast API" will be demonstrated in a cloud environment
 Since we deploy and commit, the following understanding of Git is crucial:
 ![GitHub Workflow](doc/git_workflow.png)
 
+Remarks: Deployment in AZURE as WebApp possible
+
 ## How we do it
 
 ## Docker
