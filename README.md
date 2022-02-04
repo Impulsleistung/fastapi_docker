@@ -30,3 +30,30 @@ Remarks: Deployment in AZURE as WebApp possible
 
 * [Thunder Client](https://www.thunderclient.com/)
 
+# Build process
+## Reset the Docker completely by
+
+> docker kill $(docker ps -q)
+> docker rm $(docker ps -a -q)
+> docker rmi $(docker images -q)
+
+## Build it all from the ground
+
+> kevin@impulsleistung:~/fastapi_pandas$ docker build -t myimage .
+Sending build context to Docker daemon  615.9kB
+
+## Run it
+> kevin@impulsleistung:~/fastapi_pandas$ docker run -d --name mycontainer2 -p 8080:8080 myimage
+
+## Check the running status
+kevin@impulsleistung:~/fastapi_pandas$ docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                                       NAMES
+3b63fb214919   myimage   "uvicorn app.main:ap…"   47 seconds ago   Up 47 seconds   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   mycontainer2
+
+## Fetch the IP-Adress
+kevin@impulsleistung:~/fastapi_pandas$ hostname -I
+164.90.236.185 10.19.0.5 
+
+## Access the api
+http://164.90.236.185:8080/api/v1/users
+
