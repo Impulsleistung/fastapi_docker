@@ -4,7 +4,10 @@ from uuid import UUID, uuid4
 from fastapi import FastAPI, HTTPException
 
 # Specific imports of our Data Models go here:
-from models import Gender, Role, User, UserUpdateRequest
+# Here is the catch: The root directory is /fastapi_pandas$ and that is
+# where the DOCKER will run, so the directory of this application MUST
+# be included or the container will crash
+from app.models import Gender, Role, User, UserUpdateRequest
 
 # Keep the main - call simple
 app = FastAPI()
@@ -15,8 +18,8 @@ app = FastAPI()
 #   ... described in the models.py
 #   ... the UUID is given by default for testing resons only
 db: List[User] = [
-    User(id=UUID("b59c76c4-e7e6-42ae-b411-a7a945e885d8"), first_name="Jamila",
-         last_name="Ahmed", gender=Gender.female, roles=[Role.student]),
+    User(id=UUID("b59c76c4-e7e6-42ae-b411-a7a945e885d8"), first_name="Kevin",
+         last_name="Ostheimer", gender=Gender.male, roles=[Role.student]),
     User(id=UUID("a567623c-e70d-4cbd-b42c-cea2bbbe5b6c"), first_name="Alex", last_name="Jones",
          gender=Gender.male, roles=[Role.admin, Role.user])
 
