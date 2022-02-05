@@ -1,59 +1,70 @@
-# Fast API and pandas
+In this project, the implementation of FastAPI is demonstrated and executed in a Docker container. The repository is managed on GitHub and executed in a container instance on a UBUNTU/DOCKER. 
 
-## Why
+Techstack: 
+- FastAPI / pydantic 
+- UVICORN 
+- GitHub 
+- Docker -> Python:3.9 
+- Digitalocean 
 
-The technical solution of "Fast API" will be demonstrated. The API will runs with
-> uvicorn main:app --reload
-in the local environment
+Toolstack: 
+- Visual Studio Code 
+- SSH 
+- Thunder Client (REST API Testing) 
+
+The submitted code and the configurations are entirely executable. In the future, it is conceivable that further containers will be added and a storage volume will be stored. 
+ 
+The FastAPI server is started for test purposes on the local UBUNTU environment as follows:
+
+`uvicorn main:app --reload `
+
+# References 
+## Docker 
+
+* [FastAPI in Containers - Docker](https://fastapi.tiangolo.com/deployment/docker/) 
+
+## Fast API 
+* [FastAPI Tutorial - Building RESTful APIs with Python](https://www.youtube.com/watch?v=GN6ICac3OXY) 
+
+
+## Rest Testing 
+* [Thunder Client](https://www.thunderclient.com/) 
+
+
+# Build process 
+
+## Reset the Docker completely (make it naked)
+
+`docker kill $(docker ps -q)`
+
+`docker rm $(docker ps -a -q)`
+
+`docker rmi $(docker images -q)`
+
+
+## Build the container from the ground up
+
+`kevin@impulsleistung:~/$ docker build -t myimage . `
+
+## Run it 
+
+`kevin@impulsleistung:~/$ docker run -d --name mycontainer2 -p 8080:8080 myimage `
 
 
 
- in a cloud environment and in interaction with Python/Pandas data types. The use of a container-based architecture is preferred as the solution should be modular and scalable. The architecture is sketched for better understanding
+## Check the running status 
 
-Since we deploy and commit, the following understanding of Git is crucial:
+`kevin@impulsleistung:~/fastapi_pandas$ docker ps` 
+ 
 
-![GitHub Workflow](doc/git_workflow.png)
+## Fetch the IP-Adress to see the FastAPI
 
-Remarks: Deployment in AZURE as WebApp possible
+`kevin@impulsleistung:~/$ hostname -I` 
+ 
 
-## How we do it
+## Access the FastAPI
 
-## Docker
+> http://164.90.236.185:8080/api/v1/users 
 
-* [FastAPI in Containers - Docker](https://fastapi.tiangolo.com/deployment/docker/)
-
-## Fast API
-
-* [FastAPI Tutorial - Building RESTful APIs with Python](https://www.youtube.com/watch?v=GN6ICac3OXY)
-
-## Rest Testing
-
-* [Thunder Client](https://www.thunderclient.com/)
-
-# Build process
-## Reset the Docker completely by
-
-> docker kill $(docker ps -q)
-> docker rm $(docker ps -a -q)
-> docker rmi $(docker images -q)
-
-## Build it all from the ground
-
-> kevin@impulsleistung:~/fastapi_pandas$ docker build -t myimage .
-Sending build context to Docker daemon  615.9kB
-
-## Run it
-> kevin@impulsleistung:~/fastapi_pandas$ docker run -d --name mycontainer2 -p 8080:8080 myimage
-
-## Check the running status
-kevin@impulsleistung:~/fastapi_pandas$ docker ps
-CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                                       NAMES
-3b63fb214919   myimage   "uvicorn app.main:ap…"   47 seconds ago   Up 47 seconds   0.0.0.0:8080->8080/tcp, :::8080->8080/tcp   mycontainer2
-
-## Fetch the IP-Adress
-kevin@impulsleistung:~/fastapi_pandas$ hostname -I
-164.90.236.185 10.19.0.5 
-
-## Access the api
-http://164.90.236.185:8080/api/v1/users
-
+## The interactive testing can be done here
+> http://164.90.236.185:8080/docs
